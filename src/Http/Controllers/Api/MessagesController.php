@@ -217,9 +217,9 @@ class MessagesController extends Controller
             ->orWhere('ch_messages.to_id', Auth::user()->id);
         })
         ->where('users.id','!=',Auth::user()->id)
-        ->select('users.id', 'users.name',DB::raw('MAX(ch_messages.created_at) max_created_at'))
+        ->select('users.id', 'users.firstname', 'users.lastname', DB::raw('MAX(ch_messages.created_at) max_created_at'))
         ->orderBy('max_created_at', 'desc')
-        ->groupBy('users.id', 'users.name')
+        ->groupBy('users.id', 'users.firstname', 'users.lastname')
         ->paginate($request->per_page ?? $this->perPage);
 
         return response()->json([
