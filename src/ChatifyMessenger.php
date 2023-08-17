@@ -104,7 +104,7 @@ class ChatifyMessenger
         $authData = json_encode([
             'user_id' => $authUser->id,
             'user_info' => [
-                'name' => $authUser->name
+                'name' => $authUser->firstname
             ]
         ]);
         // check if user authenticated
